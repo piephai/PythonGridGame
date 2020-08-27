@@ -483,20 +483,26 @@ def check_cell_location(location):
 # -------------------------Competitor A - Rainy weather competitor drawing components------------------------------
 
 
-def rainy_colour_background():
+def rainy_colour_background():  # Drawing the background colour for the competitor.
 
-    pen_border_width = 2
+    rainy_background_colour = 'cornflower blue'
+    border_colour = 'black'
+    border_width = 2
 
+    # Sending turtle to corner of the grid.
     setheading(0)
     forward(cell_width/2)
     setheading(90)
     forward(cell_height/2)
-    width(pen_border_width)
-    pencolor('black')
-    fillcolor('cornflower blue')
+
+    # Filling in the grid with the 'cornflower blue' colour
+    width(border_width)
+    pencolor(border_colour)
+    fillcolor(rainy_background_colour)
     begin_fill()
     pendown()
 
+    # For each loop to fill in grid colour.
     for background in range(2):
         left(90)
         forward(cell_width)
@@ -506,15 +512,20 @@ def rainy_colour_background():
     penup()
 
 
-def rainy_city_background():
+def rainy_city_background():  # Drawing buildings in the background
 
     building_size = 30
+    building_colour = 'dark blue'
+    pen_colour = 'black'
 
+    # Going to location to start building drawings
     setheading(270)
     forward(cell_height/1.5)
     setheading(180)
-    pencolor('black')
-    fillcolor('dark blue')
+
+    # Filling in buildings with the 'dark blue' colour
+    pencolor(pen_colour)
+    fillcolor(building_colour)
     begin_fill()
     pendown()
 
@@ -557,13 +568,15 @@ def rainy_city_background():
     left(90)
     forward(building_size*2)
     right(90)
+
+    # Going back to the start to fill in the drawings
     setheading(0)
     forward(cell_width)
     end_fill()
     penup()
 
 
-def random_lights_on():
+def random_lights_on():  # Randomises windows to have lights on by being yellow coloured
     random_value = randint(1, 2)
     if (random_value == 1):
         window_colour = 'yellow'
@@ -572,9 +585,9 @@ def random_lights_on():
     return window_colour
 
 
-def set_window_color(color):
-    pencolor(color)
-    fillcolor(color)
+def set_window_color(colour):  # Sets the window colours
+    pencolor(colour)
+    fillcolor(colour)
 
 
 def building_windows():
@@ -583,7 +596,7 @@ def building_windows():
     window_size = 5
     set_window_color(random_lights_on())
 
-    # Drawing window for the first building from the right.
+    # Going to window location for the first building on the right
     setheading(180)
     forward(window_size)
     setheading(90)
@@ -591,6 +604,7 @@ def building_windows():
     forward(window_size)
     pendown()
 
+    # Drawing window for the first building from the right
     begin_fill()
     for lines in range(4):
         forward(window_size)
@@ -598,13 +612,14 @@ def building_windows():
     end_fill()
     penup()
 
-    # Drawing windows for the second building from the right.
+    # Going to window location for the second building on the right
     setheading(180)
     forward(building_size/2)
     setheading(270)
     forward(window_size*1.5)
     setheading(90)
 
+    # Drawing windows for the second building from the right
     for second_building_windows in range(5):
         forward(window_size*1.5)
         set_window_color(random_lights_on())
@@ -616,12 +631,13 @@ def building_windows():
         end_fill()
         penup()
 
-    # Drawing windows for the third building from the right.
+    # Going to window location for the third building from the right
     setheading(270)
     forward(building_size)
     setheading(180)
     forward(building_size/1.35)
 
+    # Drawing windows for the third building from the right
     for third_building_windows in range(10):
         setheading(90)
         set_window_color(random_lights_on())
@@ -634,12 +650,13 @@ def building_windows():
         forward(window_size)
     penup()
 
-    # Drawing windows for the fourth building from the right.
+    # Going to window location for the fourth building from the right
     setheading(270)
     forward(window_size*11)
     setheading(180)
     forward(building_size)
 
+    # Drawing windows for the fourth building from the right
     for fourth_building_windows in range(8):
         setheading(90)
         set_window_color(random_lights_on())
@@ -656,12 +673,13 @@ def building_windows():
         forward(window_size)
     penup()
 
-    # Drawing right column of windows for the fifth building from the right.
+    # Going to right window location for the fifth building from the right
     setheading(270)
     forward(building_size*1.4)
     setheading(180)
     forward(window_size*5)
 
+    # Drawing right column of windows for the fifth building from the right
     for fifth_building_windows in range(5):
         setheading(90)
         forward(window_size*2)
@@ -674,11 +692,13 @@ def building_windows():
         end_fill()
         penup()
 
-    # Drawing left column of windows for the fifth building from the right.
+    # Going to left window location for the fifth building from the right.
     setheading(270)
     forward(building_size*1.65)
     setheading(180)
     forward(window_size*2)
+
+    # Drawing left column of windows for the fifth building from the right
     for fifth_building_windows in range(5):
         setheading(90)
         forward(window_size*2)
@@ -691,10 +711,8 @@ def building_windows():
         end_fill()
         penup()
 
-    # Drawing a street path for the lamp posts and chairs to go on.
 
-
-def street_path():
+def street_path():  # Drawing a street path
 
     path_width = 15
     path_length = (cell_width)
@@ -702,16 +720,20 @@ def street_path():
     path_color = 'dark slate grey'
     pen_colour = 'black'
 
+    # Goes to the location for the street path to be drawn
     penup()
     setheading(0)
-    forward(cell_width - (window_size*2.6))  # OKAY?
+    forward(cell_width - (window_size*2.6))
     setheading(270)
     forward(cell_height/1.85)
+
+    # Filling in the road with the 'dark slate grey' colour and 'black' border
     pencolor(pen_colour)
-    pendown()
     fillcolor(path_color)
     begin_fill()
+    pendown()
 
+    # For each loop to draw the path and fill it in
     for path in range(2):
         forward(path_width)
         right(90)
@@ -719,19 +741,18 @@ def street_path():
         right(90)
     end_fill()
     penup()
-    setheading(180)
-    forward(2)
 
 
-def lamp_post():
+def lamp_post():  # Draws lamp posts
 
     lamp_post_size = 15
     lamp_post_head = 4
     lamp_head_colour = 'gold'
     lamp_post_colour = 'dark slate grey'
     post_spacing = 30
-
     pencolor(lamp_post_colour)
+
+    # Goes to location for the first lamp post
     setheading(180)
     forward(post_spacing)
 
@@ -760,35 +781,43 @@ def lamp_post():
             end_fill()
         penup()
 
+        # Ensures lamp posts are on the same level and evenly spaced
+
         setheading(270)
         forward(lamp_post_size/1.5)
         setheading(180)
         forward(post_spacing)
 
 
-def park_trees():
+def park_trees():  # Drawing trees for the street
 
     tree_spacing = 10
     tree_size = 10
     leave_size = 7
-
     tree_branch_size = 5
     tree_leaves_colour = 'forest green'
     tree_trunk_colour = 'brown'
 
+    # Going to location for the first tree
     setheading(270)
     forward(tree_spacing/2)
     setheading(0)
     forward(tree_spacing*1.5)
 
-    # Creating multiple trees in a row.
+    # Creating multiple trees in a row with a for each loop.
     for trees in range(3):
+
+        # Spacing between trees
         setheading(0)
         forward(tree_spacing*3)
-        setheading(90)
+
+        # Drawing the tree trunk
         pendown()
+        setheading(90)
         pencolor(tree_trunk_colour)
         forward(tree_size)
+
+        # Drawing the left tree branch and tree leaves
         setheading(135)
         forward(tree_branch_size)
         dot(leave_size, tree_leaves_colour)
@@ -796,26 +825,33 @@ def park_trees():
         setheading(315)
         forward(tree_branch_size)
         setheading(90)
+
+        # Drawing the middle tree branch and tree leaves
         pendown()
         forward(tree_size)
         dot(leave_size, tree_leaves_colour)
         setheading(270)
         penup()
         forward(tree_size)
+
+        # Drawing the right tree branch and tree leaves
         setheading(45)
         forward(tree_branch_size)
         dot(leave_size, tree_leaves_colour)
         penup()
+
+        # Going back to the base level for the next tree
         setheading(270)
         forward(tree_size+(leave_size/2))
 
 
-def moon():
+def moon():  # Moon drawing for the sky
 
     moon_size = 5
     moon_colour = 'white'
     sky_color = 'cornflower blue'
 
+    # Going to the location for the moon
     penup()
     setheading(90)
     forward(cell_height/1.4)
@@ -834,18 +870,17 @@ def moon():
     forward(moon_size)
     setheading(90)
 
-    # Second circle with bg colour to create moon.
+    # Second circle with background colour to create moon.
     pendown()
     fillcolor(sky_color)
     begin_fill()
     pencolor(sky_color)
     circle(moon_size)
     end_fill()
-
     penup()
 
 
-def star_loop():
+def star_loop():  # Drawing function to call when placing stars in the sky
 
     star_size = 5
     pensize(1)
@@ -1240,7 +1275,8 @@ def palm_tree_leaves():  # Palm leaves for the palm tree
 def sunny_umbrella():  # Umbrella for the sand shore
 
     umbrella_size = 10
-    umbrella_colour = 'red'
+    colour_list = 'red', 'green', 'hot pink', 'purple'
+    umbrella_colour = choice(colour_list)
     umbrella_handle_colour = 'black'
 
     # Going to the location for the umbrella handle to be drawn
@@ -1283,13 +1319,13 @@ def sunny_umbrella():  # Umbrella for the sand shore
 # ------------------Competitor C - Snowy weather drawing components--------------------------
 
 
-def snow_colour_background():  # Drawing the background colour for the competitor.
+def snow_colour_background():  # Drawing the background colour for the competitor
 
     snow_background_colour = 'steel blue'
     border_colour = 'black'
     border_width = 2
 
-    # Sending turtle to corner of the grid.
+    # Sending turtle to corner of the grid
     setheading(0)
     forward(cell_width/2)
     setheading(90)
@@ -1301,7 +1337,7 @@ def snow_colour_background():  # Drawing the background colour for the competito
     begin_fill()
     pendown()
 
-    # For each loop to fill in grid colour.
+    # For each loop to fill in grid colour
     for move in range(2):
         left(90)
         forward(cell_width)
@@ -1426,6 +1462,51 @@ def snowy_road():
     penup()
 
 
+def snow_trees():
+
+    trunk_width = 2
+    trunk_height = 6
+    tree_height = 10
+    tree_trunk_colour = 'saddle brown'
+    tree_leaves_colour = 'forest green'
+
+    # Filling in the colour of the tree trunk
+    pencolor(tree_trunk_colour)
+    fillcolor(tree_trunk_colour)
+    begin_fill()
+    pendown()
+    setheading(90)
+
+    # For each loop to create the tree trunk
+    for tree in range(2):
+        forward(trunk_height)
+        left(90)
+        forward(trunk_width)
+        left(90)
+    end_fill()
+    penup()
+
+    # Filling in the colour of the tree crown
+    setheading(90)
+    forward(trunk_width * 2)
+    setheading(0)
+    forward(trunk_height//2)
+    fillcolor(tree_leaves_colour)
+    pencolor(tree_leaves_colour)
+    begin_fill()
+    pendown()
+
+    # Creating the tree crown
+    setheading(115)
+    forward(tree_height)
+    setheading(250)
+    forward(tree_height)
+    setheading(0)
+    forward(tree_height * 0.75)
+    end_fill()
+    penup()
+
+
 def tree_location():
     tree_spacing = 20
 
@@ -1458,39 +1539,6 @@ def tree_location():
     snow_trees()
     forward(tree_spacing/2)
     snow_trees()
-
-
-def mountains():
-
-    mountain_colour = 'grey'
-    mountain_size = 28
-    border_size = 1
-
-    # Going to the starting point of the mountain drawing
-    setheading(270)
-    forward(cell_height/2)
-    setheading(180)
-    forward(border_size)
-    setheading(135)
-
-    # Filling in the mountain with colour
-    pencolor(mountain_colour)
-    fillcolor(mountain_colour)
-    begin_fill()
-    pendown()
-
-    # For each loop to draw two mountains
-    for mountains in range(2):
-        forward(mountain_size)
-        setheading(225)
-        forward(mountain_size * 2)
-        setheading(135)
-
-    # Going back to the start to fill in the colour.
-    setheading(0)
-    forward(cell_width - border_size)
-    end_fill()
-    penup()
 
 
 def mountain_snow():
@@ -1548,50 +1596,6 @@ def mountain_snow():
     end_fill()
     penup()
 
-
-def snow_trees():
-
-    trunk_width = 2
-    trunk_height = 6
-    tree_height = 10
-    tree_trunk_colour = 'saddle brown'
-    tree_leaves_colour = 'forest green'
-
-    # Filling in the colour of the tree trunk
-    pencolor(tree_trunk_colour)
-    fillcolor(tree_trunk_colour)
-    begin_fill()
-    pendown()
-    setheading(90)
-
-    # For each loop to create the tree trunk
-    for tree in range(2):
-        forward(trunk_height)
-        left(90)
-        forward(trunk_width)
-        left(90)
-    end_fill()
-    penup()
-
-    # Filling in the colour of the tree crown
-    setheading(90)
-    forward(trunk_width * 2)
-    setheading(0)
-    forward(trunk_height//2)
-    fillcolor(tree_leaves_colour)
-    pencolor(tree_leaves_colour)
-    begin_fill()
-    pendown()
-
-    # Creating the tree crown
-    setheading(115)
-    forward(tree_height)
-    setheading(250)
-    forward(tree_height)
-    setheading(0)
-    forward(tree_height * 0.75)
-    end_fill()
-    penup()
 # ------------------------------------Competitor D - Cloudy weather drawing components------------------------------------
 
 
@@ -2238,6 +2242,7 @@ def process_moves(temp_moves):
                     draw_cloudy_competitor()
                     competitor_D_location.append(pos())
                     # print(competitor_D_location[-1])
+
 
     #
     #--------------------------------------------------------------------#
