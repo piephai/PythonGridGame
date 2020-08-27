@@ -1274,8 +1274,9 @@ def palm_tree_leaves():  # Palm leaves for the palm tree
 
 def sunny_umbrella():  # Umbrella for the sand shore
 
+    # Choice generates random umbrella colour for each grid
     umbrella_size = 10
-    colour_list = 'red', 'green', 'hot pink', 'purple'
+    colour_list = 'red', 'dark orange', 'hot pink', 'purple', 'violet red',
     umbrella_colour = choice(colour_list)
     umbrella_handle_colour = 'black'
 
@@ -2242,7 +2243,6 @@ def process_moves(temp_moves):
                     draw_cloudy_competitor()
                     competitor_D_location.append(pos())
                     # print(competitor_D_location[-1])
-
 
     #
     #--------------------------------------------------------------------#
