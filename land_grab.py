@@ -115,7 +115,7 @@ def create_drawing_canvas(show_instructions=True,  # show Part B instructions
         forward(grid_size * cell_width)
 
     # Draw the vertical grid lines
-    setheading(90)  # face north
+    setheading(90)  # face north of grid
     for line_no in range(0, grid_size + 1):
         penup()
         goto(left_edge + line_no * cell_width, bottom_edge)
