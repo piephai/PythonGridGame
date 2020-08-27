@@ -451,6 +451,7 @@ def process_moves(temp_moves):
     # for i in competitor_A_location:
     #     print(i)
 
+    # Length of array temp_moves
     for i in range(len(temp_moves)):
         print("Move number", i)
         pendown()
