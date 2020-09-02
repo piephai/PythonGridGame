@@ -2011,6 +2011,7 @@ def process_moves(temp_moves):
     competitor_B_location = []
     competitor_C_location = []
     competitor_D_location = []
+    home_location = []
 
     # Go to the middle of the top left hand corner cell - Competitor A
     goto(((-cell_width*7)/2 + (cell_width/2)),
@@ -2062,6 +2063,8 @@ def process_moves(temp_moves):
                     competitor_A_location[-1] = pos()
                     draw_rainy_competitor(competitor_A_location)
                     competitor_A_location[-1] = pos()
+                    check_if_home(competitor_A_location,
+                                  home_location, "Competitor A")
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_A_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
@@ -2073,6 +2076,8 @@ def process_moves(temp_moves):
                     competitor_A_location[-1] = pos()
                     draw_rainy_competitor(competitor_A_location)
                     competitor_A_location[-1] = pos()
+                    check_if_home(competitor_A_location,
+                                  home_location, "Competitor A")
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_A_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
@@ -2084,6 +2089,8 @@ def process_moves(temp_moves):
                     competitor_A_location[-1] = pos()
                     draw_rainy_competitor(competitor_A_location)
                     competitor_A_location[-1] = pos()
+                    check_if_home(competitor_A_location,
+                                  home_location, "Competitor A")
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_A_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
@@ -2095,6 +2102,8 @@ def process_moves(temp_moves):
                     competitor_A_location[-1] = pos()
                     draw_rainy_competitor(competitor_A_location)
                     competitor_A_location[-1] = pos()
+                    check_if_home(competitor_A_location,
+                                  home_location, "Competitor A")
 
         elif (temp_moves[i][0] == 'Competitor B'):
             penup()
@@ -2109,6 +2118,8 @@ def process_moves(temp_moves):
                     forward(cell_height)
                     draw_sunny_competitor()
                     competitor_B_location[-1] = pos()
+                    check_if_home(competitor_B_location,
+                                  home_location, "Competitor B")
                     # print(competitor_B_location[-1])
 
             elif temp_moves[i][1] == 'Left':
@@ -2120,6 +2131,8 @@ def process_moves(temp_moves):
                     forward(cell_width)
                     draw_sunny_competitor()
                     competitor_B_location[-1] = pos()
+                    check_if_home(competitor_B_location,
+                                  home_location, "Competitor B")
                     # print(competitor_B_location[-1])
 
             elif temp_moves[i][1] == 'Right':
@@ -2131,6 +2144,8 @@ def process_moves(temp_moves):
                     forward(cell_width)
                     draw_sunny_competitor()
                     competitor_B_location[-1] = pos()
+                    check_if_home(competitor_B_location,
+                                  home_location, "Competitor B")
                     # print(competitor_B_location[-1])
 
             elif temp_moves[i][1] == 'Up':
@@ -2142,6 +2157,8 @@ def process_moves(temp_moves):
                     forward(cell_height)
                     draw_sunny_competitor()
                     competitor_B_location[-1] = pos()
+                    check_if_home(competitor_B_location,
+                                  home_location, "Competitor B")
                     # print(competitor_B_location[-1])
         elif (temp_moves[i][0] == 'Competitor C'):
             penup()
@@ -2159,6 +2176,8 @@ def process_moves(temp_moves):
                     competitor_C_location[-1] = pos()
                     draw_snow_competitor(competitor_C_location)
                     competitor_C_location[-1] = pos()
+                    check_if_home(competitor_C_location,
+                                  home_location, "Competitor C")
                     # print(competitor_C_location[-1])
 
             elif temp_moves[i][1] == 'Left':
@@ -2171,6 +2190,8 @@ def process_moves(temp_moves):
                     competitor_C_location[-1] = pos()
                     draw_snow_competitor(competitor_C_location)
                     competitor_C_location[-1] = pos()
+                    check_if_home(competitor_C_location,
+                                  home_location, "Competitor C")
                     # print(competitor_C_location[-1])
 
             elif temp_moves[i][1] == 'Right':
@@ -2183,6 +2204,8 @@ def process_moves(temp_moves):
                     competitor_C_location[-1] = pos()
                     draw_snow_competitor(competitor_C_location)
                     competitor_C_location[-1] = pos()
+                    check_if_home(competitor_C_location,
+                                  home_location, "Competitor C")
                     # print(competitor_C_location[-1])
 
             elif temp_moves[i][1] == 'Up':
@@ -2195,6 +2218,8 @@ def process_moves(temp_moves):
                     competitor_C_location[-1] = pos()
                     draw_snow_competitor(competitor_C_location)
                     competitor_C_location[-1] = pos()
+                    check_if_home(competitor_C_location,
+                                  home_location, "Competitor C")
                     # print(competitor_C_location[-1])
         elif (temp_moves[i][0] == 'Competitor D'):
             penup()
@@ -2207,8 +2232,11 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_D_location)
                     setheading(270)
                     forward(cell_height)
+                    competitor_D_location[-1] = pos()
                     draw_cloudy_competitor()
-                    competitor_D_location.append(pos())
+                    competitor_D_location[-1] = pos()
+                    check_if_home(competitor_D_location,
+                                  home_location, "Competitor D")
                     # print(competitor_D_location[-1])
 
             elif temp_moves[i][1] == 'Left':
@@ -2218,8 +2246,11 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_D_location)
                     setheading(180)
                     forward(cell_width)
+                    competitor_D_location[-1] = pos()
                     draw_cloudy_competitor()
-                    competitor_D_location.append(pos())
+                    competitor_D_location[-1] = pos()
+                    check_if_home(competitor_D_location,
+                                  home_location, "Competitor D")
                     # print(competitor_D_location[-1])
 
             elif temp_moves[i][1] == 'Right':
@@ -2229,8 +2260,11 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_D_location)
                     setheading(0)
                     forward(cell_width)
+                    competitor_D_location[-1] = pos()
                     draw_cloudy_competitor()
-                    competitor_D_location.append(pos())
+                    competitor_D_location[-1] = pos()
+                    check_if_home(competitor_D_location,
+                                  home_location, "Competitor D")
                     # print(competitor_D_location[-1])
 
             elif temp_moves[i][1] == 'Up':
@@ -2240,22 +2274,51 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_D_location)
                     setheading(90)
                     forward(cell_height)
+                    competitor_D_location[-1] = pos()
                     draw_cloudy_competitor()
-                    competitor_D_location.append(pos())
+                    competitor_D_location[-1] = pos()
+                    check_if_home(competitor_D_location,
+                                  home_location, "Competitor D")
                     # print(competitor_D_location[-1])
 
-    #
-    #--------------------------------------------------------------------#
-    #-----Main Program---------------------------------------------------#
-    #
-    # This main program sets up the canvas, ready for you to start
-    # drawing your solution, and calls your solution.  Do not change
-    # any of this code except as indicated by the comments marked '*****'.
-    #
-    # Set up the drawing canvas
-    # ***** You can change the background and line colours, choose
-    # ***** whether or not to label the axes, etc, by providing
-    # ***** arguments to this function call
+    penup()
+    goto(cell_width*4.5, 0)
+    pendown()
+    if home_location:
+        if (home_location[0] == "Competitor A"):
+            draw_rainy_competitor()
+        elif (home_location[0] == "Competitor B"):
+            draw_sunny_competitor()
+        elif (home_location[0] == "Competitor C"):
+            draw_snow_competitor()
+        elif (home_location[0] == "Competitor D"):
+            draw_cloudy_competitor()
+    else:
+        write('No competitor\nreached the\nhome square')
+
+
+def check_if_home(competitor_location, home_location, competitor_name):
+    if (-(cell_width/2) <= competitor_location[0][0] <= (cell_width/2)
+            and (-(cell_height/2) <= competitor_location[0][1] <= (cell_height/2))):
+        home_location.append(competitor_name)
+        return home_location
+
+    else:
+        pass
+
+
+        #
+        #--------------------------------------------------------------------#
+        #-----Main Program---------------------------------------------------#
+        #
+        # This main program sets up the canvas, ready for you to start
+        # drawing your solution, and calls your solution.  Do not change
+        # any of this code except as indicated by the comments marked '*****'.
+        #
+        # Set up the drawing canvas
+        # ***** You can change the background and line colours, choose
+        # ***** whether or not to label the axes, etc, by providing
+        # ***** arguments to this function call
 create_drawing_canvas()
 
 # Control the drawing speed
