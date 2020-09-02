@@ -156,12 +156,8 @@ def create_drawing_canvas(show_instructions=True,  # show Part B instructions
     # Optionally write the instructions
     if show_instructions:
         # Font for the instructions
-        big_font = ('Arial', (24 * cell_width) // 100, 'normal')
-        competitor_font = ('Arial', (10 * cell_width) // 100, 'bold')
-        # Text to the right of the grid
-        penup()
-        goto((grid_size * cell_width) // 2 + 50, -cell_height // 3)
-        write('This space\nreserved for\nPart B', align='left', font=big_font)
+        competitor_font = ('Arial', (10 * cell_width) // 100, 'normal')
+        pencolor('black')
         # Competitor A label
         goto((-grid_size * cell_width) // 2 - 150, (cell_height * 3) - 10)
         write('Competitor A:\nRainy weather',
@@ -1989,29 +1985,15 @@ def draw_cloudy_competitor():  # Functions needed to draw the cloudy competitor
     house_on_the_hill()
     tree_on_the_hill()
 
-# def competitor_movement(competitor_location, direction, competitor_name):
-#     if (competitor_name == "competitor_A"):
-#         draw_rainy_competitor()
-#     penup()
-#     goto(competitor_location[-1])
-#     check_cell_location(competitor_location)
-#     if (direction == "Down"):
-#         if ((competitor_location[-1][1] - cell_height) < -((cell_height*grid_size)/2)):
-#             print("Out of range down")
-#         else:
-
-#             if (competitor_name = "competitor_A"):
-#                 draw_rainy_competitor()
-#             elif (competitor_name = "")
-
 
 def process_moves(temp_moves):
 
+    # Creating all the required lists
     competitor_A_location = []
     competitor_B_location = []
     competitor_C_location = []
     competitor_D_location = []
-    home_location = []
+    home_location = []  # List of competitors who made it to the home square
 
     # Go to the middle of the top left hand corner cell - Competitor A
     goto(((-cell_width*7)/2 + (cell_width/2)),
@@ -2054,7 +2036,7 @@ def process_moves(temp_moves):
             check_cell_location(competitor_A_location)
             if (temp_moves[i][1] == 'Down'):
                 if ((competitor_A_location[-1][1] - cell_height) < -((cell_height*grid_size)/2)):
-                    print("Out of range down")
+                    pass
 
                 else:
                     check_cell_location(competitor_A_location)
@@ -2068,7 +2050,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_A_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
-                    print("Out of range left")
+                    pass
                 else:
                     check_cell_location(competitor_A_location)
                     setheading(180)
@@ -2081,7 +2063,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_A_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
-                    print("Out of range right")
+                    pass
                 else:
                     check_cell_location(competitor_A_location)
                     setheading(0)
@@ -2094,7 +2076,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_A_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
-                    print("Out of range top")
+                    pass
                 else:
                     check_cell_location(competitor_A_location)
                     setheading(90)
@@ -2111,7 +2093,7 @@ def process_moves(temp_moves):
             check_cell_location(competitor_B_location)
             if (temp_moves[i][1] == 'Down'):
                 if ((competitor_B_location[-1][1] - cell_height) < -((cell_height*grid_size)/2)):
-                    print("Out of range down")
+                    pass
                 else:
                     check_cell_location(competitor_B_location)
                     setheading(270)
@@ -2124,7 +2106,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_B_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
-                    print("Out of range left")
+                    pass
                 else:
                     check_cell_location(competitor_B_location)
                     setheading(180)
@@ -2137,7 +2119,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_B_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
-                    print("Out of range right")
+                    pass
                 else:
                     check_cell_location(competitor_B_location)
                     setheading(0)
@@ -2150,7 +2132,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_B_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
-                    print("Out of range top")
+                    pass
                 else:
                     check_cell_location(competitor_B_location)
                     setheading(90)
@@ -2166,7 +2148,7 @@ def process_moves(temp_moves):
             check_cell_location(competitor_C_location)
             if (temp_moves[i][1] == 'Down'):
                 if ((competitor_C_location[-1][1] - cell_height) < -((cell_height*grid_size)/2)):
-                    print("Out of range down")
+                    pass
                     # competitor_C_location.append(pos())
                     # print(competitor_C_location[-1])
                 else:
@@ -2182,7 +2164,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_C_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
-                    print("Out of range left")
+                    pass
                 else:
                     check_cell_location(competitor_C_location)
                     setheading(180)
@@ -2196,7 +2178,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_C_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
-                    print("Out of range right")
+                    pass
                 else:
                     check_cell_location(competitor_C_location)
                     setheading(0)
@@ -2210,7 +2192,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_C_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
-                    print("Out of range top")
+                    pass
                 else:
                     check_cell_location(competitor_C_location)
                     setheading(90)
@@ -2227,7 +2209,7 @@ def process_moves(temp_moves):
             check_cell_location(competitor_D_location)
             if (temp_moves[i][1] == 'Down'):
                 if ((competitor_D_location[-1][1] - cell_height) < -((cell_height*grid_size)/2)):
-                    print("Out of range down")
+                    pass
                 else:
                     check_cell_location(competitor_D_location)
                     setheading(270)
@@ -2241,7 +2223,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_D_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
-                    print("Out of range left")
+                    pass
                 else:
                     check_cell_location(competitor_D_location)
                     setheading(180)
@@ -2255,7 +2237,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_D_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
-                    print("Out of range right")
+                    pass
                 else:
                     check_cell_location(competitor_D_location)
                     setheading(0)
@@ -2269,7 +2251,7 @@ def process_moves(temp_moves):
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_D_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
-                    print("Out of range top")
+                    pass
                 else:
                     check_cell_location(competitor_D_location)
                     setheading(90)
@@ -2282,19 +2264,30 @@ def process_moves(temp_moves):
                     # print(competitor_D_location[-1])
 
     penup()
-    goto(cell_width*4.5, 0)
-    pendown()
+    pencolor('black')
+    big_font = ('Arial', (12 * cell_width) // 100, 'normal')
     if home_location:
+        goto(cell_width*4, 50)
+        write('First competitor\nto reach home:', align='left', font=big_font)
+        pendown()
+        goto(cell_width*4.5, 0)
         if (home_location[0] == "Competitor A"):
-            draw_rainy_competitor()
+            competitor_A_location[-1] = pos()
+            draw_rainy_competitor(competitor_A_location)
         elif (home_location[0] == "Competitor B"):
+            competitor_B_location[-1] = pos()
             draw_sunny_competitor()
         elif (home_location[0] == "Competitor C"):
-            draw_snow_competitor()
+            competitor_C_location[-1] = pos()
+            draw_snow_competitor(competitor_C_location)
         elif (home_location[0] == "Competitor D"):
+            competitor_D_location[-1] = pos()
             draw_cloudy_competitor()
     else:
-        write('No competitor\nreached the\nhome square')
+        goto((cell_width*4)-20, -30)
+        pendown()
+        write('No competitor\nreached the\nhome square',
+              align='left', font=big_font)
 
 
 def check_if_home(competitor_location, home_location, competitor_name):
