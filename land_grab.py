@@ -455,22 +455,34 @@ def check_cell_location(location):
         for yIndex in range(1, grid_size + 1):
 
             # Check if turtle is in the bottom left quandrant
-            if (((location[-1][0]) >= -((cell_width*xIndex)/2)) and (location[-1][0] <= -((cell_width*(xIndex-1)/2)) and (location[-1][1] >= -((cell_height*yIndex)/2)) and (location[-1][1] <= -((cell_height*(yIndex-1)/2))))):
+            if (((location[-1][0]) >= -((cell_width*xIndex)/2))
+                and (location[-1][0] <= -((cell_width*(xIndex-1)/2))
+                     and (location[-1][1] >= -((cell_height*yIndex)/2))
+                     and (location[-1][1] <= -((cell_height*(yIndex-1)/2))))):
                 goto_cell(-xIndex, -yIndex, 1, 1)
                 location[-1] = pos()
 
             # Check if turtle is in the check if turtle is in the top right quadrant
-            elif (((location[-1][0]) <= ((cell_width*xIndex)/2)) and (location[-1][0] >= ((cell_width*(xIndex-1)/2)) and (location[-1][1] <= ((cell_height*yIndex)/2)) and (location[-1][1] >= ((cell_height*(yIndex-1)/2))))):
+            elif (((location[-1][0]) <= ((cell_width*xIndex)/2))
+                  and (location[-1][0] >= ((cell_width*(xIndex-1)/2))
+                       and (location[-1][1] <= ((cell_height*yIndex)/2))
+                       and (location[-1][1] >= ((cell_height*(yIndex-1)/2))))):
                 goto_cell(xIndex, yIndex, -1, -1)
                 location[-1] = pos()
 
             # Check if turtle is in the bottom right quadrant
-            elif (((location[-1][0]) <= ((cell_width*xIndex)/2)) and (location[-1][0] >= ((cell_width*(xIndex-1)/2)) and (location[-1][1] >= -((cell_height*yIndex)/2)) and (location[-1][1] <= -((cell_height*(yIndex-1)/2))))):
+            elif (((location[-1][0]) <= ((cell_width*xIndex)/2))
+                  and (location[-1][0] >= ((cell_width*(xIndex-1)/2))
+                       and (location[-1][1] >= -((cell_height*yIndex)/2))
+                       and (location[-1][1] <= -((cell_height*(yIndex-1)/2))))):
                 goto_cell(xIndex, -yIndex, -1, 1)
                 location[-1] = pos()
 
             # Check if turtle is in the top left quadrant
-            elif (((location[-1][0]) >= -((cell_width*xIndex)/2)) and (location[-1][0] <= -((cell_width*(xIndex-1)/2)) and (location[-1][1] <= ((cell_height*yIndex)/2)) and (location[-1][1] >= ((cell_height*(yIndex-1)/2))))):
+            elif (((location[-1][0]) >= -((cell_width*xIndex)/2))
+                  and (location[-1][0] <= -((cell_width*(xIndex-1)/2))
+                       and (location[-1][1] <= ((cell_height*yIndex)/2))
+                       and (location[-1][1] >= ((cell_height*(yIndex-1)/2))))):
                 goto_cell(-xIndex, yIndex, 1, -1)
                 location[-1] = pos()
     return location
