@@ -164,11 +164,11 @@ def create_drawing_canvas(show_instructions=True,  # show Part B instructions
               align='left', font=competitor_font, )
         # Competitor B label
         goto((-grid_size * cell_width) // 2 - 150, (-cell_height * 3) - 10)
-        write('Competitor B:\nSunny weather',
+        write('Competitor C:\nSunny weather',
               align='left', font=competitor_font, )
         # Competitor C label
         goto((grid_size * cell_width) // 2 + 25, (cell_height * 3) - 10)
-        write('Competitor C:\nSnowy weather',
+        write('Competitor B:\nSnowy weather',
               align='left', font=competitor_font, )
         # Competitor D label
         goto((grid_size * cell_width) // 2 + 25, (-cell_height * 3) - 10)
@@ -414,7 +414,7 @@ def random_moves(the_seed=None, max_rounds=35):
 
 
 # Initialise the random_moves list
-random_moves = random_moves()
+random_moves = random_moves(62)
 
 
 # ---------------------Helper functions----------------------------
@@ -2015,19 +2015,21 @@ def process_moves(temp_moves):
     check_cell_location(competitor_A_location)
 
     # Go to the middle of the bottom left hand corner cell - Competitor B
-    goto(((-cell_width*7)/2 + (cell_width/2)),
-         (((-cell_height*7)/2) + (cell_height/2)))
+    goto(((cell_width*7)/2 - (cell_width/2)),
+         (((cell_height*7)/2) - (cell_height/2)))
     competitor_B_location.append(pos())
-    draw_sunny_competitor()
+    draw_snow_competitor(competitor_B_location)
+
     check_cell_location(competitor_B_location)
 
     # Go to the middle of the top right hand corner cell - Competitor C
-    goto(((cell_width*7)/2 - (cell_width/2)),
-         (((cell_height*7)/2) - (cell_height/2)))
-    competitor_C_location.append(pos())
-    draw_snow_competitor(competitor_C_location)
-    check_cell_location(competitor_C_location)
+    goto(((-cell_width*7)/2 + (cell_width/2)),
+         (((-cell_height*7)/2) + (cell_height/2)))
 
+    competitor_C_location.append(pos())
+
+    check_cell_location(competitor_C_location)
+    draw_sunny_competitor()
     # Go to the middle of the bottom right hand corner cell - Competitor D
     goto(((cell_width*7)/2 - (cell_width/2)),
          (((-cell_height*7)/2) + (cell_height/2)))
@@ -2110,11 +2112,11 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_B_location)
                     setheading(270)
                     forward(cell_height)
-                    draw_sunny_competitor()
+                    competitor_B_location[-1] = pos()
+                    draw_snow_competitor(competitor_B_location)
                     competitor_B_location[-1] = pos()
                     check_if_home(competitor_B_location,
                                   home_location, "Competitor B")
-                    # print(competitor_B_location[-1])
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_B_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
@@ -2123,11 +2125,11 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_B_location)
                     setheading(180)
                     forward(cell_width)
-                    draw_sunny_competitor()
+                    competitor_B_location[-1] = pos()
+                    draw_snow_competitor(competitor_B_location)
                     competitor_B_location[-1] = pos()
                     check_if_home(competitor_B_location,
                                   home_location, "Competitor B")
-                    # print(competitor_B_location[-1])
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_B_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
@@ -2136,11 +2138,11 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_B_location)
                     setheading(0)
                     forward(cell_width)
-                    draw_sunny_competitor()
+                    competitor_B_location[-1] = pos()
+                    draw_snow_competitor(competitor_B_location)
                     competitor_B_location[-1] = pos()
                     check_if_home(competitor_B_location,
                                   home_location, "Competitor B")
-                    # print(competitor_B_location[-1])
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_B_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
@@ -2149,11 +2151,12 @@ def process_moves(temp_moves):
                     check_cell_location(competitor_B_location)
                     setheading(90)
                     forward(cell_height)
-                    draw_sunny_competitor()
+                    competitor_B_location[-1] = pos()
+                    draw_snow_competitor(competitor_B_location)
                     competitor_B_location[-1] = pos()
                     check_if_home(competitor_B_location,
                                   home_location, "Competitor B")
-                    # print(competitor_B_location[-1])
+
         elif (temp_moves[i][0] == 'Competitor C'):
             penup()
             goto(competitor_C_location[-1])
@@ -2161,18 +2164,16 @@ def process_moves(temp_moves):
             if (temp_moves[i][1] == 'Down'):
                 if ((competitor_C_location[-1][1] - cell_height) < -((cell_height*grid_size)/2)):
                     pass
-                    # competitor_C_location.append(pos())
-                    # print(competitor_C_location[-1])
+
                 else:
                     check_cell_location(competitor_C_location)
                     setheading(270)
                     forward(cell_height)
                     competitor_C_location[-1] = pos()
-                    draw_snow_competitor(competitor_C_location)
+                    draw_sunny_competitor()
                     competitor_C_location[-1] = pos()
                     check_if_home(competitor_C_location,
                                   home_location, "Competitor C")
-                    # print(competitor_C_location[-1])
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_C_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
@@ -2182,11 +2183,10 @@ def process_moves(temp_moves):
                     setheading(180)
                     forward(cell_width)
                     competitor_C_location[-1] = pos()
-                    draw_snow_competitor(competitor_C_location)
+                    draw_sunny_competitor()
                     competitor_C_location[-1] = pos()
                     check_if_home(competitor_C_location,
                                   home_location, "Competitor C")
-                    # print(competitor_C_location[-1])
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_C_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
@@ -2196,11 +2196,10 @@ def process_moves(temp_moves):
                     setheading(0)
                     forward(cell_width)
                     competitor_C_location[-1] = pos()
-                    draw_snow_competitor(competitor_C_location)
+                    draw_sunny_competitor()
                     competitor_C_location[-1] = pos()
                     check_if_home(competitor_C_location,
                                   home_location, "Competitor C")
-                    # print(competitor_C_location[-1])
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_C_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
@@ -2210,11 +2209,11 @@ def process_moves(temp_moves):
                     setheading(90)
                     forward(cell_height)
                     competitor_C_location[-1] = pos()
-                    draw_snow_competitor(competitor_C_location)
+                    draw_sunny_competitor()
                     competitor_C_location[-1] = pos()
                     check_if_home(competitor_C_location,
                                   home_location, "Competitor C")
-                    # print(competitor_C_location[-1])
+
         elif (temp_moves[i][0] == 'Competitor D'):
             penup()
             goto(competitor_D_location[-1])
@@ -2231,7 +2230,6 @@ def process_moves(temp_moves):
                     competitor_D_location[-1] = pos()
                     check_if_home(competitor_D_location,
                                   home_location, "Competitor D")
-                    # print(competitor_D_location[-1])
 
             elif temp_moves[i][1] == 'Left':
                 if ((competitor_D_location[-1][0] - cell_width) < -((cell_width * grid_size)/2)):
@@ -2245,7 +2243,6 @@ def process_moves(temp_moves):
                     competitor_D_location[-1] = pos()
                     check_if_home(competitor_D_location,
                                   home_location, "Competitor D")
-                    # print(competitor_D_location[-1])
 
             elif temp_moves[i][1] == 'Right':
                 if (competitor_D_location[-1][0] + cell_width > ((cell_width * grid_size)/2)):
@@ -2259,7 +2256,6 @@ def process_moves(temp_moves):
                     competitor_D_location[-1] = pos()
                     check_if_home(competitor_D_location,
                                   home_location, "Competitor D")
-                    # print(competitor_D_location[-1])
 
             elif temp_moves[i][1] == 'Up':
                 if (competitor_D_location[-1][1] + cell_height > ((cell_height * grid_size)/2)):
@@ -2273,7 +2269,6 @@ def process_moves(temp_moves):
                     competitor_D_location[-1] = pos()
                     check_if_home(competitor_D_location,
                                   home_location, "Competitor D")
-                    # print(competitor_D_location[-1])
 
     penup()
     pencolor('black')
@@ -2288,10 +2283,10 @@ def process_moves(temp_moves):
             draw_rainy_competitor(competitor_A_location)
         elif (home_location[0] == "Competitor B"):
             competitor_B_location[-1] = pos()
-            draw_sunny_competitor()
+            draw_snow_competitor(competitor_B_location)
         elif (home_location[0] == "Competitor C"):
             competitor_C_location[-1] = pos()
-            draw_snow_competitor(competitor_C_location)
+            draw_sunny_competitor()
         elif (home_location[0] == "Competitor D"):
             competitor_D_location[-1] = pos()
             draw_cloudy_competitor()
